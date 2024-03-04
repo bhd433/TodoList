@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TodoTable from './TodoTable';
+import TodoList from './TodoList';
 
 function App() {
   const [kentta, setKentta] = useState({ teksti: '', pvm: '' });
@@ -28,11 +29,7 @@ function App() {
   return (
     <div>
       <h1>Todolist</h1>
-      <form onSubmit={lisaus}>
-        <input type="text" name="teksti" value={kentta.teksti} onChange={kenttaMuuttui} placeholder="Tehtävä" />
-        <input type="text" name="pvm" value={kentta.pvm} onChange={kenttaMuuttui} placeholder="Päivämäärä" />
-        <button type="submit">Lisää</button>
-      </form>
+      <TodoList props={{kenttaMuuttui, lisaus, kentta, todo}}/>
 
       <TodoTable props={{todo, poistaTehtava}}/>
     </div>
